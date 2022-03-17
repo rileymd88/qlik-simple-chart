@@ -1,0 +1,11 @@
+{
+  "name": "Simple chart for Qlik Sense",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Riley MacDonald"
+  },
+  "icon": "chart",
+  "type": "visualization",
+  "supernova": true
+}
