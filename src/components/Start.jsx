@@ -18,16 +18,21 @@ export default function Start({ app, id, rect, edit }) {
 
 
   useEffect(async () => {
+    getDimensionsAndMeasures()
+  }, []);
+
+  const getDimensionsAndMeasures = async ()  => {
     const [d, m] = await Promise.all([
       getDimensions(app),
       getMeasures(app)
     ])
     dispatch(setDimensions(d))
     dispatch(setMeasures(m))
-  }, []);
+  }
 
   const handleClickOpen = () => {
     setShowDialog(true);
+    getDimensionsAndMeasures()
   };
 
   const handleClose = () => {
