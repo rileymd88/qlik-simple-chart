@@ -10,5 +10,5 @@
 2. Run `npm i`
 3. Run `npm run build`
 4. Run `npm run sense`
-5. Then zip the contents in the folder automation-trigger-ext and then upload as an extension
+5. Then zip the contents in the folder qlik-simple-chart-ext and then upload as an extension
 
