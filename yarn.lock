@@ -2438,12 +2438,85 @@
   "resolved" "https://registry.npmjs.org/@nebula.js/sn-bar-chart/-/sn-bar-chart-1.12.20.tgz"
   "version" "1.12.20"
 
+"@nebula.js/sn-boxplot@^0.26.9":
+  "integrity" "sha512-3qjzXkyvyTHfoydTOrYEqx3lvNUfUdg0rsm+CJto4cwE64jVTKvGYVq8XnlXJ21Xx04HlOCYgBKLKmdjcERlNg=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-boxplot/-/sn-boxplot-0.26.9.tgz"
+  "version" "0.26.9"
+
+"@nebula.js/sn-bullet-chart@^1.9.19":
+  "integrity" "sha512-U61mvW4zjDW7Wd8Hn0l/swJOXLKkkwIYA4vSyuMTyM9FaJFmskQedAREaXr8Uv956k9gZNj6NwNQurODrsdG7w=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-bullet-chart/-/sn-bullet-chart-1.9.19.tgz"
+  "version" "1.9.19"
+
+"@nebula.js/sn-combo-chart@^1.8.15":
+  "integrity" "sha512-jgodqt6BcMwAw4W36B+HUqtP9paKE82H9XP1Upjwv5v9IE+xigYhTZVzVACLkROPh8XVD7mtAcqfJvcPstzb3Q=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-combo-chart/-/sn-combo-chart-1.8.15.tgz"
+  "version" "1.8.15"
+
+"@nebula.js/sn-funnel-chart@^1.3.13":
+  "integrity" "sha512-0R4uwUyjAY5F0JDDawev9njfvCASj96oogwd5kHq9MW8TsnU75z+ceGDqnnwlxoIm/GgrKvd9Di8q/Z9rPQCFQ=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-funnel-chart/-/sn-funnel-chart-1.3.13.tgz"
+  "version" "1.3.13"
+
+"@nebula.js/sn-grid-chart@^1.4.21":
+  "integrity" "sha512-AWs6ZCEJVihooI8Lir21XPvqjOMSHToqZPJgasXEX8fjJo7iqWApKMeAZseFvx25e11NPfc479UjFf4gG0mtzw=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-grid-chart/-/sn-grid-chart-1.4.21.tgz"
+  "version" "1.4.21"
+
+"@nebula.js/sn-histogram@^0.26.0":
+  "integrity" "sha512-OyZaKhyVmtIz+d/Hgpvf8P6ADVJCClzbp5t/G6xEyDG6x5q9zhWGFnmRftHhJicOy5hb9NzuI/iXj6VIX0/Xpg=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-histogram/-/sn-histogram-0.26.0.tgz"
+  "version" "0.26.0"
+
+"@nebula.js/sn-kpi@^0.8.1":
+  "integrity" "sha512-Qoof6j0XKGrncuiz/l3GiVElJPH8qAYi6bRuoLp+ji7EAQSW7XITR5gwfPe3WJY8Lwkk88nFGcsrKw9q8gnsgA=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-kpi/-/sn-kpi-0.8.1.tgz"
+  "version" "0.8.1"
+  dependencies:
+    "fs-extra" "^10.0.0"
+    "yargs" "^17.1.1"
+
+"@nebula.js/sn-line-chart@^1.15.10":
+  "integrity" "sha512-WXyGXx9tmGi7CFdhjR6cBT3wf7MLNyKg/jPinDmYWSc/K7gBBqaPMh+m4Hdc3surRWkWgoVHDB059Bg0/LRqYw=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-line-chart/-/sn-line-chart-1.15.10.tgz"
+  "version" "1.15.10"
+
+"@nebula.js/sn-mekko-chart@^1.0.6":
+  "integrity" "sha512-6NTJmOcGbcPPqS7jSz3dIuMGhXr9uoSekc0vSJqFe40xLR+yBpX3dHw3oAStLDI03edZl3PFnkz9ezZ0qzmbFA=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-mekko-chart/-/sn-mekko-chart-1.0.6.tgz"
+  "version" "1.0.6"
+
+"@nebula.js/sn-org-chart@^1.0.3":
+  "integrity" "sha512-RzTZyhj3Rku0GiS09eudJXfRUev1JiQXLJAT/aaXdlanE+L7RejD1FDPlT39lxKpNokm0KWeAJqbUYcWG1bKAg=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-org-chart/-/sn-org-chart-1.0.3.tgz"
+  "version" "1.0.3"
+
+"@nebula.js/sn-pie-chart@^1.11.19":
+  "integrity" "sha512-K0Do+PwtKsc4TB6UFyp9tqCYqOyFJRl4K7ZDVV5cvGOpFqucYLa2KGnxibOLVSHR/D8L3kqQQ7QYFYvwcA9wmA=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-pie-chart/-/sn-pie-chart-1.11.19.tgz"
+  "version" "1.11.19"
+
+"@nebula.js/sn-sankey-chart@^1.4.22":
+  "integrity" "sha512-jTJX/BfDPAKvnk57gjK2nj1/obg0xONh1RD+/i69sQ6vPZHA2OmlCoqQIIeaDdk9cgaO061KvdoDU93NOVHKdA=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-sankey-chart/-/sn-sankey-chart-1.4.22.tgz"
+  "version" "1.4.22"
+
+"@nebula.js/sn-scatter-plot@^3.7.0":
+  "integrity" "sha512-k4SV3ZOBRPiPgAJP/rQ4Gzqq9vvroSIv67cEZ8EUaJWVXP2neta1tdafawz9ju/Rr17xfBy69YENBuHUKTE+og=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-scatter-plot/-/sn-scatter-plot-3.7.0.tgz"
+  "version" "3.7.0"
+
 "@nebula.js/sn-table@^1.7.1":
   "integrity" "sha512-hwXAgxZR/OgNE2yKWX1hAJR+/+3K/mNjCm19k6PXXnYUaHem+UABoeafryX/3xpKrhoWeGyrjU2mWZv1G0z8VA=="
   "resolved" "https://registry.npmjs.org/@nebula.js/sn-table/-/sn-table-1.7.1.tgz"
   "version" "1.7.1"
 
-"@nebula.js/stardust@^2.6.1", "@nebula.js/stardust@>=1.7.0", "@nebula.js/stardust@2.x":
+"@nebula.js/sn-waterfall@^0.25.13":
+  "integrity" "sha512-WJO/84qgC+gALFDOlCerCtiXH8qBiyHfsrJgQHXBNYjuFHHYw09yhTnId4TdpZ5VxLahcK+kDkWPzHSfliyMqA=="
+  "resolved" "https://registry.npmjs.org/@nebula.js/sn-waterfall/-/sn-waterfall-0.25.13.tgz"
+  "version" "0.25.13"
+
+"@nebula.js/stardust@^2.6.1", "@nebula.js/stardust@>=1.0.0", "@nebula.js/stardust@>=1.2.0", "@nebula.js/stardust@>=1.4.0", "@nebula.js/stardust@>=1.7.0", "@nebula.js/stardust@>=2.0.0-beta.1", "@nebula.js/stardust@>=2.3.1", "@nebula.js/stardust@2.x":
   "integrity" "sha512-HdLJSif7rB97Bl1gZAxEA7zuFLIicOgya6NY9UwPOBBSnlcWWhyt648CACPZS6tjC7ToCXQHQMO3rIMR9BkRyw=="
   "resolved" "https://registry.npmjs.org/@nebula.js/stardust/-/stardust-2.6.1.tgz"
   "version" "2.6.1"
@@ -5885,7 +5958,7 @@
   "resolved" "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz"
   "version" "1.0.0"
 
-"fs-extra@10.0.0":
+"fs-extra@^10.0.0", "fs-extra@10.0.0":
   "integrity" "sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ=="
   "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-10.0.0.tgz"
   "version" "10.0.0"
@@ -12172,6 +12245,19 @@
     "which-module" "^2.0.0"
     "y18n" "^4.0.0"
     "yargs-parser" "^13.1.2"
+
+"yargs@^17.1.1":
+  "integrity" "sha512-WJudfrk81yWFSOkZYpAZx4Nt7V4xp7S/uJkX0CnxovMCt1wCE8LNftPpNuF9X/u9gN5nsD7ycYtRcDf2pL3UiA=="
+  "resolved" "https://registry.npmjs.org/yargs/-/yargs-17.4.0.tgz"
+  "version" "17.4.0"
+  dependencies:
+    "cliui" "^7.0.2"
+    "escalade" "^3.1.1"
+    "get-caller-file" "^2.0.5"
+    "require-directory" "^2.1.1"
+    "string-width" "^4.2.3"
+    "y18n" "^5.0.5"
+    "yargs-parser" "^21.0.0"
 
 "yargs@13.2.2":
   "integrity" "sha512-WyEoxgyTD3w5XRpAQNYUB9ycVH/PQrToaTXdYXRdOXvEy1l19br+VJsc0vcO8PTGg5ro/l/GY7F/JMEBmI0BxA=="

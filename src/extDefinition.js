@@ -21,9 +21,9 @@
     dropdownOnly: true,
     type: 'string',
     ref: 'props.chartType',
-    defaultValue: 'barchart',
+    defaultValue: 'bar',
     options: [
-      { value: 'barchart', label: 'Barchart' },
+      { value: 'bar', label: 'Bar chart' },
       { value: 'table', label: 'Table' },
     ]
   }
@@ -44,12 +44,14 @@ export default {
     items: {
       dimensions: {
         uses: 'dimensions',
+        min: 0,
         items: {
           useInChart: useInChart
         }
       },
       measures: {
         uses: 'measures',
+        min: 0,
         items: {
           useInChart: useInChart
         }

@@ -1,14 +1,15 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/system';
-import { IconButton } from '@material-ui/core';
-import TableChartIcon from '@mui/icons-material/TableChart'
-import BarChartIcon from '@mui/icons-material/BarChart'
-import { updateChart } from '../services/backend';
+import { useSelector, useDispatch } from 'react-redux';
+import { setOpen, selectOpen } from '../states/mainSlice';
+import ChartIcon from './ChartIcon';
 
 
 
-export default function ChartPicker({ app, id, edit, chartType }) {
-  
+export default function ChartPicker({ chartType }) {
+  const open = useSelector(selectOpen)
+  const dispatch = useDispatch()
+
   useEffect(async () => {
 
   }, []);
@@ -19,18 +20,13 @@ export default function ChartPicker({ app, id, edit, chartType }) {
     justifyContent: 'flex-end',
     width: '100%',
     minHeight: '40px',
-    maxHeight: '40px'
+    maxHeight: '40px',
+    cursor: 'pointer',
   });
 
-
   return (
-    <ChartPickerContainer>
-      <IconButton onClick={()=>updateChart(app, id, edit, 'table')}>
-        <TableChartIcon sx={chartType === 'table' ? {color: 'green'} : {color: 'gray'}}></TableChartIcon>
-      </IconButton>
-      <IconButton onClick={()=>updateChart(app, id, edit, 'barchart')}>
-        <BarChartIcon sx={chartType === 'barchart' ? {color: 'green'} : {color: 'gray'}}></BarChartIcon>
-      </IconButton>
+    <ChartPickerContainer onClick={() => dispatch(setOpen(!open))}>
+      <ChartIcon chartType={chartType}></ChartIcon>
     </ChartPickerContainer>
   );
 }

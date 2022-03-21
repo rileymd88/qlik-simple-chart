@@ -5,6 +5,7 @@ export const slice = createSlice({
   initialState: {
     dimensions: [],
     measures: [],
+    open: false,
   },
   reducers: {
     setDimensions: (state, action) => {
@@ -19,13 +20,17 @@ export const slice = createSlice({
     updateMeasure: (state, action) => {
       state.measures[action.payload.index].checked = action.payload.checked
     },
+    setOpen: (state, action) => {
+      state.open = action.payload
+    },
   },
 });
 
 
 export const selectDimensions = state => state.main.dimensions;
 export const selectMeasures = state => state.main.measures;
+export const selectOpen = state => state.main.open;
 
-export const { setDimensions, setMeasures, updateDimension, updateMeasure } = slice.actions;
+export const { setDimensions, setMeasures, updateDimension, updateMeasure, setOpen } = slice.actions;
 
 export default slice.reducer;
