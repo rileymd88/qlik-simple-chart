@@ -2,15 +2,17 @@ import React, { useRef, useEffect } from 'react';
 import { styled } from '@mui/system';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectOpen, setDraggedField } from '../states/mainSlice';
+import { updateFields } from '../services/backend';
 import MuiChip from '@mui/material/Chip';
 import Draggable from 'react-draggable';
 
-export default function Chip({ label, canDelete, landingArea }) {
+export default function Chip({ app, id, edit, field, selFields, canDelete, index }) {
   const dispatch = useDispatch()
   const ref = useRef(null)
   const [fontWeight, setFontWeight] = React.useState('normal')
   const [position, setPosition] = React.useState(null)
   const [dragging, setDragging] = React.useState(false)
+  const [zIndex, setzIndex] = React.useState(1000)
 
   useEffect(() => {
     (async function setup() {
@@ -20,11 +22,19 @@ export default function Chip({ label, canDelete, landingArea }) {
     }
   }, []);
 
-  const onDragStop = () => {
+  const onDragStop = (e) => {
+    console.log('dropping')
     setPosition({ x: 0, y: 0 })
     setFontWeight('normal')
     setDragging(false)
     dispatch(setDraggedField({}))
+    console.log(e.target.classList)
+    if (e.target.classList.contains("drop-target")) {
+      console.log("Dropped!", e.target.id);
+      const i = parseInt(e.target.id.split('qscDragSpace')[1])
+      selFields.splice(i, 0, field)
+      updateFields(app, id, `${field.type}s`, edit, selFields)
+    }
   }
 
   const onDragStart = () => {
@@ -34,14 +44,28 @@ export default function Chip({ label, canDelete, landingArea }) {
 
   const onDrag = (e, position) => {
     setPosition(position);
-    const field = {
-      width: ref.current.clientWidth
-    }
-    dispatch(setDraggedField(field))
+    let f = { ...field }
+    f.width = ref.current.clientWidth
+    dispatch(setDraggedField(f))
   };
 
-  const onDelete = (e, position) => {
-    setPosition(position);
+  const onMouseOver = () => {
+    if (!dragging) {
+      setzIndex(1003)
+    }
+    else {
+      setzIndex(1000)
+    }
+  }
+
+  const onMouseExit = () => {
+    setzIndex(1000)
+  }
+
+  const onDelete = () => {
+    console.log('deleting')
+    selFields.splice(index, 1)
+    updateFields(app, id, `${field.type}s`, edit, selFields)
   };
 
   let fixedChip
@@ -59,7 +83,7 @@ export default function Chip({ label, canDelete, landingArea }) {
             cursor: 'pointer',
             zIndex: 1,
           }}
-          label={label}
+          label={field.qscName}
         >
         </MuiChip>
       </Draggable>
@@ -68,8 +92,11 @@ export default function Chip({ label, canDelete, landingArea }) {
   let draggableChip
   if (canDelete) {
     draggableChip = <MuiChip
+      onMouseOver={onMouseOver}
+      onMouseExit={onMouseExit}
       bounds="parent"
       axis="x"
+      onDelete={onDelete}
       ref={ref}
       sx={{
         maxWidth: 150,
@@ -79,7 +106,7 @@ export default function Chip({ label, canDelete, landingArea }) {
           fontWeight
         },
       }}
-      label={label}
+      label={field.qscName}
     >
     </MuiChip>
   }
@@ -93,29 +120,17 @@ export default function Chip({ label, canDelete, landingArea }) {
           fontWeight
         },
       }}
-      label={label}
+      label={field.qscName}
     >
     </MuiChip>
-  }
-
-  const onMouseOver = (e) => {
-    e.preventDefault()
-    if(landingArea) {
-      const { width, x } = ref.current.getBoundingClientRect();
-      console.log(e.clientX > (width/2) + x)
-    }
-  }
-  const onDrop = (e) => {
-    
   }
 
   return (
     <div style={{ zIndex: 1000 }}>
       <Draggable
-        onStart={onDragStart}
+        onStart={canDelete ? () => false : (e) => onDragStart(e)}
         onStop={onDragStop}
         onDrag={onDrag}
-        onDrop={onDrop}
         position={position}
       >
         {draggableChip}

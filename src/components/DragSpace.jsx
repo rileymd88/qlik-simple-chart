@@ -5,7 +5,7 @@ import { selectDraggedField } from '../states/mainSlice';
 
 let chart
 
-export default function DragSpace({ index }) {
+export default function DragSpace({ index, fullWidth }) {
   const draggedField = useSelector(selectDraggedField)
   const [width, setWidth] = React.useState(50)
   const [margin, setMargin] = React.useState(-25)
@@ -19,12 +19,12 @@ export default function DragSpace({ index }) {
   }, []);
 
   const DragSpaceContainer = styled('div')({
-    width: width,
+    width: fullWidth ? '100%' : width,
     height: 32,
     display: 'flex',
     flexDirection: 'row',
-    zIndex: 1001,
-    marginLeft: margin,
+    zIndex: typeof draggedField.width !== 'undefined' ? 1001 : 999,
+    marginLeft: index === 0 ? 0 : margin,
     marginRight: margin,
   });
 
@@ -45,7 +45,7 @@ export default function DragSpace({ index }) {
   }
 
   return (
-    <DragSpaceContainer className='drop-target' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} onMouseExit={onMouseExit}>
+    <DragSpaceContainer id={`qscDragSpace${index}`} className='drop-target' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} onMouseExit={onMouseExit}>
 
     </DragSpaceContainer>
   );

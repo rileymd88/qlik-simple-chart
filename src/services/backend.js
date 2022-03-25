@@ -104,41 +104,46 @@ export const setFields = async (app, id, type, edit, fields) => {
 }
 
 
-export const updateField = async (app, id, type, edit, index, useInChart) => {
+export const updateFields = async (app, id, type, edit, fields) => {
   const object = await app.getObject(id)
-  const props = await object.getProperties()
   const softPatch = edit === false
-  let fieldPath
-  if (type === 'dimension') {
-    fieldPath = 'qDimensions'
-  }
-  else {
-    fieldPath = 'qMeasures'
-  }
-  let finalPath
-  let finalValue
-  if(typeof props.qHyperCubeDef[fieldPath][index].qDef.useInChart !== 'undefined') {
-    finalPath = 'qDef/useInChart'
-    finalValue = useInChart
-  }
-  else {
-    finalPath = 'qDef'
-    finalValue = {...props.qHyperCubeDef[fieldPath][index].qDef}
-    finalValue.useInChart = useInChart
-  }
   try {
     const patchParams = {
       qSoftPatch: softPatch,
       qPatches: [{
-        qPath: `/qHyperCubeDef/${fieldPath}/${index}/${finalPath}`,
+        qPath: `/props/${type}`,
         qOp: 'replace',
-        qValue: JSON.stringify(finalValue)
+        qValue: JSON.stringify(JSON.stringify(fields))
       }]
     }
     await object.applyPatches(patchParams)
   }
   catch (e) {
-    console.info('Update field error', e)
+    console.info('Update fields error', e)
+  }
+}
+
+export const updateDefaultProps = async (app, id, edit) => {
+  const object = await app.getObject(id)
+  const softPatch = edit === false
+  try {
+    const patchParams = {
+      qSoftPatch: softPatch,
+      qPatches: [{
+        qPath: `/props/dimensions`,
+        qOp: 'add',
+        qValue: JSON.stringify(JSON.stringify([]))
+      },
+      {
+        qPath: `/props/measures`,
+        qOp: 'add',
+        qValue: JSON.stringify(JSON.stringify([]))
+      }]
+    }
+    await object.applyPatches(patchParams)
+  }
+  catch (e) {
+    console.info('Update fields error', e)
   }
 }
 

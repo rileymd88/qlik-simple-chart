@@ -1,22 +1,17 @@
 import React, { useEffect } from 'react';
 import MuiList from '@mui/material/List';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateField, getMasterItem } from '../services/backend';
 import { ListItem, ListItemText, ListSubheader, IconButton, Icon } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Chip from './Chip'
 
 
-export default function List({ app, id, type, fields, edit, hypercube }) {
+export default function List({ app, id, type, fields, selFields, edit }) {
   const dispatch = useDispatch();
 
   useEffect(async () => {
   }, []);
-
-  const onFieldChange = async (checked, index) => {
-    await updateField(app, id, type, edit, index, checked)
-  }
 
   return (
     <MuiList
@@ -32,9 +27,13 @@ export default function List({ app, id, type, fields, edit, hypercube }) {
         return <ListItem
         >
           <Chip
-            label={type === 'dimension' ? hypercube.qDimensionInfo[i].qFallbackTitle : hypercube.qMeasureInfo[i].qFallbackTitle}
-            canDelete={true}
-            landingArea={false}
+            app={app} 
+            id={id} 
+            edit={edit}
+            field={f}
+            selFields={selFields}
+            canDelete={false}
+            index={i}
           >
           </Chip>
         </ListItem>

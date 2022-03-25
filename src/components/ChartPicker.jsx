@@ -4,17 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setOpen, selectOpen } from '../states/mainSlice';
 import ChartIcon from './ChartIcon';
 import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
 import { Typography } from '@material-ui/core';
 import Chip from './Chip'
 import DragSpace from './DragSpace'
 
 
 
-export default function ChartPicker({ dimensions, measures, chartType }) {
+export default function ChartPicker({ app, id, edit, selDimensions, selMeasures, chartType }) {
   const open = useSelector(selectOpen)
-  const [dragSpaceWidth, setDragSpaceWidth] = React.useState(10)
   const dispatch = useDispatch()
-  console.log('dimensions', dimensions)
+  console.log('selDimensions', selDimensions)
 
   useEffect(async () => {
 
@@ -26,8 +26,7 @@ export default function ChartPicker({ dimensions, measures, chartType }) {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    minHeight: '40px',
-    maxHeight: '40px',
+    heihgt: '100%',
     cursor: 'pointer',
   });
 
@@ -36,21 +35,50 @@ export default function ChartPicker({ dimensions, measures, chartType }) {
     flexDirection: 'row'
   });
 
+  const FieldContainer = styled('div')({
+    display: 'flex',
+    flexDirection: 'row'
+  });
+
+  let finalDimensionDragSpace
+  if (selDimensions.length > 0) {
+    finalDimensionDragSpace = <DragSpace index={selDimensions.length} fullWidth={true}></DragSpace>
+  }
+
   return (
     <ChartPickerContainer id='chartpicker' >
-      <Stack direction='row' alignItems="center" justifyContent='flex-start' spacing={2}>
-        <Stack direction='row' alignItems="center">
-            <DragSpace id='what'></DragSpace>
-          {dimensions.map((d) => {
+      <Stack sx={{ width: '100%', marginLeft: 4 }} direction='column' alignItems="center" justifyContent='flex-start'>
+        <Stack sx={{ width: '100%', border: '1px solid lightgray' }} direction='row' alignItems="center" justifyContent='center' spacing={1}>
+          <DragSpace index={0} fullWidth={selDimensions.length === 0}></DragSpace>
+          {selDimensions.map((d, i) => {
+            let dragSpace
+            if (i !== selDimensions.length - 1) {
+              dragSpace = <DragSpace index={i + 1} fullWidth={false}></DragSpace>
+            }
             return <ChipContainer>
-              <Chip label={d.qscName} canDelete={true} landingArea={true}></Chip>
-              <DragSpace></DragSpace>
+              <Chip app={app} id={id} edit={edit} field={d} selFields={selDimensions} canDelete={true} index={i}></Chip>
+              {dragSpace}
             </ChipContainer>
           })}
+          {finalDimensionDragSpace}
+        </Stack>
+        <Stack sx={{ width: '100%', border: '1px solid lightgray' }} direction='row' alignItems="center" justifyContent='center' spacing={1}>
+          <DragSpace index={0} fullWidth={selMeasures.length === 0}></DragSpace>
+          {selMeasures.map((m, i) => {
+            let dragSpace
+            if (i !== selMeasures.length - 1) {
+              dragSpace = <DragSpace index={i + 1} fullWidth={false}></DragSpace>
+            }
+            return <ChipContainer>
+              <Chip app={app} id={id} edit={edit} field={m} selFields={selMeasures} canDelete={true} index={i}></Chip>
+              {dragSpace}
+            </ChipContainer>
+          })}
+          {finalDimensionDragSpace}
         </Stack>
       </Stack>
-      <div onClick={() => dispatch(setOpen(!open))}>
-        <ChartIcon sx={{ flex: 1 }} chartType={chartType}></ChartIcon>
+      <div style={{ marginLeft: 4 }} onClick={() => dispatch(setOpen(!open))}>
+        <ChartIcon sx={{ flex: 1, zIndex: 1002 }} chartType={chartType}></ChartIcon>
       </div>
     </ChartPickerContainer>
   );

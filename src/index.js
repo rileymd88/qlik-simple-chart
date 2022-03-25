@@ -1,4 +1,5 @@
 import { useElement, useLayout, useEffect, useApp, useConstraints, useRect } from '@nebula.js/stardust';
+import { updateDefaultProps } from './services/backend';
 import properties from './object-properties';
 import extDefinition from './extDefinition'
 import data from './data';
@@ -34,7 +35,6 @@ export default function supernova() {
       const { active } = useConstraints()
       const edit = active
       const rect = useRect()
-      const toggles = layout.qHyperCube.qDimensionInfo.map(d=>d.useInChart).concat(layout.qHyperCube.qMeasureInfo.map(m=>m.useInChart))
       const e = embed.createConfiguration({
         types: [
           {
@@ -103,12 +103,35 @@ export default function supernova() {
       
 
       useEffect(async () => {
+        if(typeof layout.props.dimensions === 'undefined' || typeof layout.props.measures === 'undefined') {
+          updateDefaultProps(app, id, edit)
+        }
         const object = await app.getObject(id)
         const props = await object.getProperties()
-        const dimensions = props.qHyperCubeDef.qDimensions
-        const measures = props.qHyperCubeDef.qMeasures
-        render(app, id, dimensions, measures, element, edit, layout.qHyperCube, n, rect, layout.props.chartType)
-      }, [JSON.stringify(toggles), layout.props.chartType, rect]);
+        const dimensions = props.qHyperCubeDef.qDimensions.map((d, i) => {
+          if (typeof d.qLibraryId === 'undefined') {
+            let clone = {...d}
+            clone.qscName = layout.qHyperCube.qDimensionInfo[i].qFallbackTitle
+            return clone
+          }
+          else {
+            return { qLibraryId: d.qLibraryId, type: 'dimension', qscName: layout.qHyperCube.qDimensionInfo[i].qFallbackTitle }
+          }
+        })
+        const measures = props.qHyperCubeDef.qMeasures.map((m, i) => {
+          if (typeof m.qLibraryId === 'undefined') {
+            let clone = {...m}
+            clone.qscName = layout.qHyperCube.qMeasureInfo[i].qFallbackTitle
+            return clone
+          }
+          else {
+            return { qLibraryId: m.qLibraryId, type: 'measure', qscName: layout.qHyperCube.qMeasureInfo[i].qFallbackTitle }
+          }
+        })
+        const selDimensions = typeof layout.props.dimensions !== 'undefined' && layout.props.dimensions !== "[]" ? JSON.parse(layout.props.dimensions) : []
+        const selMeasures = typeof layout.props.measures !== 'undefined' && layout.props.measures !== "[]" ? JSON.parse(layout.props.measures) : []
+        render(app, id, dimensions, measures, element, edit, n, rect, layout.props.chartType, selDimensions, selMeasures)
+      }, [JSON.stringify(layout.props.dimensions),JSON.stringify(layout.props.measures), layout.props.chartType, rect]);
     },
   };
 }

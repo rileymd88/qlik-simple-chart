@@ -1,19 +1,5 @@
 
-  var useInChart = {
-    ref: "qDef.useInChart",
-    label: "Use in chart",
-    component: 'switch',
-    type: "boolean",
-    options: [{
-      value: false,
-      label: "Off"
-    }, {
-      value: true,
-      label: "On"
-    }
-    ],
-    defaultValue: true
-  };
+
 
   var chartType = {
     label: 'Chart type',
@@ -28,12 +14,22 @@
     ]
   }
 
-  var sortOrder = {
+  var dimensions = {
     label: 'Chart type',
     component: 'expression',
-    dropdownOnly: true,
     type: 'string',
-    ref: 'props.sortOrder',
+    ref: 'props.dimensions',
+    defaultValue: '[]',
+    show: () => {
+      return false
+    }
+  }
+
+  var measures = {
+    label: 'Chart type',
+    component: 'expression',
+    type: 'string',
+    ref: 'props.measures',
     defaultValue: '[]',
     show: () => {
       return false
@@ -46,7 +42,8 @@
     component: "items",
     items: {
       chartType: chartType,
-      sortOrder: sortOrder,
+      dimensions: dimensions,
+      measures: measures
     }
   } 
 
@@ -58,16 +55,10 @@ export default {
       dimensions: {
         uses: 'dimensions',
         min: 0,
-        items: {
-          useInChart: useInChart
-        }
       },
       measures: {
         uses: 'measures',
         min: 0,
-        items: {
-          useInChart: useInChart
-        }
       },
       settings: settings
     },
