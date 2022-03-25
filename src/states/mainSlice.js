@@ -6,6 +6,7 @@ export const slice = createSlice({
     dimensions: [],
     measures: [],
     open: false,
+    draggedField: {}
   },
   reducers: {
     setDimensions: (state, action) => {
@@ -23,6 +24,9 @@ export const slice = createSlice({
     setOpen: (state, action) => {
       state.open = action.payload
     },
+    setDraggedField: (state, action) => {
+      state.draggedField = action.payload
+    },
   },
 });
 
@@ -30,7 +34,8 @@ export const slice = createSlice({
 export const selectDimensions = state => state.main.dimensions;
 export const selectMeasures = state => state.main.measures;
 export const selectOpen = state => state.main.open;
+export const selectDraggedField = state => state.main.draggedField;
 
-export const { setDimensions, setMeasures, updateDimension, updateMeasure, setOpen } = slice.actions;
+export const { setDimensions, setMeasures, updateDimension, updateMeasure, setOpen, setDraggedField } = slice.actions;
 
 export default slice.reducer;

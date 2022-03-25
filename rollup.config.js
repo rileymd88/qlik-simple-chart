@@ -16,7 +16,7 @@ module.exports = [
       name: 'mystuff',
       format: 'umd',
       exports: 'default',
-      sourcemap: true,
+      sourcemap: false,
       globals: {
         '@nebula.js/stardust': 'stardust',
       },
@@ -58,7 +58,7 @@ module.exports = [
       name: 'mystuff',
       format: 'umd',
       exports: 'default',
-      sourcemap: true,
+      sourcemap: false,
       globals: {
         '@nebula.js/stardust': 'stardust',
       },

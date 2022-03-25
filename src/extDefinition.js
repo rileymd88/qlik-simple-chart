@@ -27,13 +27,26 @@
       { value: 'table', label: 'Table' },
     ]
   }
+
+  var sortOrder = {
+    label: 'Chart type',
+    component: 'expression',
+    dropdownOnly: true,
+    type: 'string',
+    ref: 'props.sortOrder',
+    defaultValue: '[]',
+    show: () => {
+      return false
+    }
+  }
   
   var settings = {
     type: "items",
     label: "Settings",
     component: "items",
     items: {
-      chartType: chartType
+      chartType: chartType,
+      sortOrder: sortOrder,
     }
   } 
 

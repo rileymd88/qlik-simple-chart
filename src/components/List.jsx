@@ -5,6 +5,7 @@ import { updateField, getMasterItem } from '../services/backend';
 import { ListItem, ListItemText, ListSubheader, IconButton, Icon } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Chip from './Chip'
 
 
 export default function List({ app, id, type, fields, edit, hypercube }) {
@@ -27,14 +28,15 @@ export default function List({ app, id, type, fields, edit, hypercube }) {
       }
     >
       {fields.map((f, i) => {
+        console.log('f', f)
         return <ListItem
-          secondaryAction={
-            <Checkbox checked={f.qDef.useInChart} onChange={(e) => onFieldChange(e.target.checked, i)}></Checkbox>
-          }
         >
-          <ListItemText
-            primary={type === 'dimension' ? hypercube.qDimensionInfo[i].qFallbackTitle : hypercube.qMeasureInfo[i].qFallbackTitle}
-          />
+          <Chip
+            label={type === 'dimension' ? hypercube.qDimensionInfo[i].qFallbackTitle : hypercube.qMeasureInfo[i].qFallbackTitle}
+            canDelete={true}
+            landingArea={false}
+          >
+          </Chip>
         </ListItem>
       })}
     </MuiList>

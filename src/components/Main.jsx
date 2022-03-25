@@ -52,7 +52,6 @@ export default function Main({ app, id, dimensions, measures, element, edit, hyp
         <List app={app} id={id} type='measure' fields={measures} edit={edit} hypercube={hypercube}></List>
       </ColumnContainer>
       <Chart n={n} rect={rect} fields={fields} chartType={chartType} sx={{ width: '70%' }}></Chart>
-
     </RowContainer>
   );
 }
