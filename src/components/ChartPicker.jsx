@@ -78,7 +78,7 @@ export default function ChartPicker({ app, id, edit, selDimensions, selMeasures,
         </Stack>
       </Stack>
       <div style={{ marginLeft: 4 }} onClick={() => dispatch(setOpen(!open))}>
-        <ChartIcon sx={{ flex: 1, zIndex: 1002 }} chartType={chartType}></ChartIcon>
+        <ChartIcon size='large' sx={{ flex: 1, zIndex: 1002 }} chartType={chartType}></ChartIcon>
       </div>
     </ChartPickerContainer>
   );

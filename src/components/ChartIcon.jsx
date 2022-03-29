@@ -16,57 +16,57 @@ import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 
-export default function ChartIcon({ chartType })  {
+export default function ChartIcon({ chartType, size })  {
 
-  const getIcon = () => {
+  const getIcon = (size) => {
     let icon
     if(chartType === 'table') {
-      icon = <TableChartIcon fontSize='medium' sx={{ color: 'gray' }}></TableChartIcon>
+      icon = <TableChartIcon ffontSize={size} sx={{ color: 'gray' }}></TableChartIcon>
     }
     if(chartType === 'bar') {
-      icon = <BarChartIcon fontSize='medium' sx={{ color: 'gray' }}></BarChartIcon>
+      icon = <BarChartIcon ffontSize={size} sx={{ color: 'gray' }}></BarChartIcon>
     }
     if(chartType === 'pie') {
-      icon = <PieChartIcon fontSize='medium' sx={{ color: 'gray' }}></PieChartIcon>
+      icon = <PieChartIcon ffontSize={size} sx={{ color: 'gray' }}></PieChartIcon>
     }
     if(chartType === 'combo') {
-      icon = <MultilineChartIcon fontSize='medium' sx={{ color: 'gray' }}></MultilineChartIcon>
+      icon = <MultilineChartIcon ffontSize={size} sx={{ color: 'gray' }}></MultilineChartIcon>
     }
     if(chartType === 'line') {
-      icon = <ShowChartIcon fontSize='medium' sx={{ color: 'gray' }}></ShowChartIcon>
+      icon = <ShowChartIcon ffontSize={size} sx={{ color: 'gray' }}></ShowChartIcon>
     }
     if(chartType === 'kpi') {
-      icon = <Filter1Icon fontSize='medium' sx={{ color: 'gray' }}></Filter1Icon>
+      icon = <Filter1Icon ffontSize={size} sx={{ color: 'gray' }}></Filter1Icon>
     }
     if(chartType === 'sankey') {
-      icon = <LooksOneIcon fontSize='medium' sx={{ color: 'gray' }}></LooksOneIcon>
+      icon = <LooksOneIcon ffontSize={size} sx={{ color: 'gray' }}></LooksOneIcon>
     }
     if(chartType === 'grid') {
-      icon = <GridViewIcon fontSize='medium' sx={{ color: 'gray' }}></GridViewIcon>
+      icon = <GridViewIcon ffontSize={size} sx={{ color: 'gray' }}></GridViewIcon>
     }
     if(chartType === 'bullet') {
-      icon = <AlignVerticalCenterIcon fontSize='medium' sx={{ color: 'gray' }}></AlignVerticalCenterIcon>
+      icon = <AlignVerticalCenterIcon ffontSize={size} sx={{ color: 'gray' }}></AlignVerticalCenterIcon>
     }
     if(chartType === 'box') {
-      icon = <AlignVerticalCenterIcon fontSize='medium' sx={{ color: 'gray' }}></AlignVerticalCenterIcon>
+      icon = <AlignVerticalCenterIcon ffontSize={size} sx={{ color: 'gray' }}></AlignVerticalCenterIcon>
     }
     if(chartType === 'histogram') {
-      icon = <EqualizerIcon fontSize='medium' sx={{ color: 'gray' }}></EqualizerIcon>
+      icon = <EqualizerIcon ffontSize={size} sx={{ color: 'gray' }}></EqualizerIcon>
     }
     if(chartType === 'sankey') {
-      icon = <AirIcon fontSize='medium' sx={{ color: 'gray' }}></AirIcon>
+      icon = <AirIcon ffontSize={size} sx={{ color: 'gray' }}></AirIcon>
     }
     if(chartType === 'waterfall') {
-      icon = <WaterfallChartIcon fontSize='medium' sx={{ color: 'gray' }}></WaterfallChartIcon>
+      icon = <WaterfallChartIcon ffontSize={size} sx={{ color: 'gray' }}></WaterfallChartIcon>
     }
     if(chartType === 'scatter') {
-      icon = <ScatterPlotIcon fontSize='medium' sx={{ color: 'gray' }}></ScatterPlotIcon>
+      icon = <ScatterPlotIcon ffontSize={size} sx={{ color: 'gray' }}></ScatterPlotIcon>
     }
     if(chartType === 'funnel') {
-      icon = <FilterAltIcon fontSize='medium' sx={{ color: 'gray' }}></FilterAltIcon>
+      icon = <FilterAltIcon ffontSize={size} sx={{ color: 'gray' }}></FilterAltIcon>
     }
     if(chartType === 'mekko') {
-      icon = <AutoAwesomeMosaicIcon fontSize='medium' sx={{ color: 'gray' }}></AutoAwesomeMosaicIcon>
+      icon = <AutoAwesomeMosaicIcon ffontSize={size} sx={{ color: 'gray' }}></AutoAwesomeMosaicIcon>
     }
     return icon
   }

@@ -68,7 +68,7 @@ export default function ChartDrawer({ app, id, edit, chartType }) {
             key={chart.key}
             onClick={() => handleDrawerClose(chart.key)}>
             <ListItemIcon>
-              <ChartIcon chartType={chart.key} button={false}></ChartIcon>
+              <ChartIcon chartType={chart.key} size='medium' button={false}></ChartIcon>
             </ListItemIcon>
             <ListItemText primary={chart.name} />
           </ListItem>
